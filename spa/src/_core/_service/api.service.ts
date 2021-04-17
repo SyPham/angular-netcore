@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'https://localhost:44313/api/';
+  baseUrl = 'http://localhost:5000/api/';
   constructor(private http: HttpClient) { }
   login(loginRequest) {
     return this.http.post(this.baseUrl + 'auth/login', loginRequest);
