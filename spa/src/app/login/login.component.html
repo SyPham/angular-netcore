@@ -1,0 +1,57 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h3>{{ type === 'login' ? 'Login' : 'Register'}} </h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="formData" *ngIf="type === 'login'" (ngSubmit)="login()">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" formControlName="username" class="form-control" id="username" aria-describedby="username"
+              placeholder="Enter username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" [ngClass]="{
+                    'is-invalid':
+                      formData.controls.password?.errors &&
+                      formData.controls.password?.touched,
+                    'is-valid':
+                      !formData.controls.password?.errors &&
+                      formData.controls.password?.touched
+                  }" class="form-control" placeholder="Enter password">
+          </div>
+
+          <div class="d-flex justify-content-around">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button (click)='onClickRegister()' class="btn btn-primary">Register</button>
+          </div>
+        </form>
+
+        <form [formGroup]="formData" *ngIf="type === 'register'" (ngSubmit)="register()">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" formControlName="username" class="form-control" id="username" aria-describedby="username"
+              placeholder="Enter username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" [ngClass]="{
+                              'is-invalid':
+                                formData.controls.password?.errors &&
+                                formData.controls.password?.touched,
+                              'is-valid':
+                                !formData.controls.password?.errors &&
+                                formData.controls.password?.touched
+                            }" class="form-control" placeholder="Enter password">
+          </div>
+          <div class="d-flex justify-content-around">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button (click)='onClickLogin()' type="submit" class="btn btn-primary">Return Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
